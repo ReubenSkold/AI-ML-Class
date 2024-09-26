@@ -1,0 +1,27 @@
+# coding=utf8
+# the above tag defines encoding for this document and is for Python 2.x compatibility
+
+import re
+
+regex = r"(\d{2,3}[- ]?)\d{3,4}[- ]?(\d{4})"
+
+test_str = ("4aa  13\n"
+	"aba b44\n"
+	"ababaa5\n"
+	"yaya---ikwak2@cau.ac.kr\n"
+	"il.youp.kwak@gmail.com\n"
+	"02-111-1234\n"
+	"010-3234-5555\n"
+	"01032321111\n"
+	"hello send me a message(name.kwak@cau.ac.kr)\n"
+	"call me (032 111 1424)")
+
+subst = "\\1****\\2"
+
+# You can manually specify the number of replacements by changing the 4th argument
+result = re.sub(regex, subst, test_str, 0, re.MULTILINE)
+
+if result:
+    print (result)
+
+# Note: for Python 2.7 compatibility, use ur"" to prefix the regex and u"" to prefix the test string and substitution.
